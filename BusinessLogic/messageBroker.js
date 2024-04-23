@@ -1,6 +1,6 @@
 import {connect} from 'amqplib';
 
-const connection = await connect('amqp://172.20.0.2');
+const connection = await connect(`amqp://${process.env.RABBITMQ_HOST || 'localhost:5672'}`);
 const channel = await connection.createChannel();
 const queue = 'message';
 
@@ -24,3 +24,4 @@ export default function () {
 
 // run in docker
 // docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq
+// ${process.env.RABBITMQ_HOST || 'localhost'}

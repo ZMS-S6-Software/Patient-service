@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 //controllers
-import patientController from "./controllers/PatientController.js";
+import patientController from "./Controllers/PatientController.js";
 
 //env inladen
 dotenv.config();
@@ -17,7 +17,7 @@ mongoose.set('debug', true);
 mongoose.connect(process.env.URL);
 
 //server aanmaken
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

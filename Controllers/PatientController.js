@@ -1,7 +1,7 @@
-// import rabbitQueue from '../BusinessLogic/messageBroker.js';
+import rabbitQueue from '../BusinessLogic/messageBroker.js';
 import patientLogic from '../BusinessLogic/PatientLogic.js';
 const patientService = patientLogic();
-// const queueService = rabbitQueue();
+const queueService = rabbitQueue();
 
 export default function (app) {
   app.get("/test", async (req, res) => {
