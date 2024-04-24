@@ -1,6 +1,6 @@
 import {connect} from 'amqplib';
 
-const connection = await connect(`amqp://${process.env.RABBITMQ_HOST || 'localhost:5672'}`);
+const connection = await connect(`amqp://${process.env.RABBITMQ_HOST || 'localhost'}`);
 const channel = await connection.createChannel();
 const queue = 'message';
 
@@ -10,7 +10,7 @@ await channel.assertQueue(queue, { durable:false });
 export default function () {
     async function sendDataToQueue(data) {
         try {
-        channel.sendToQueue(queue, Buffer.from(data))
+            channel.sendToQueue(queue, Buffer.from(data))
         } catch (error) {
           throw new Error("Error sending data");
         }

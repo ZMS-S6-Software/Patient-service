@@ -36,4 +36,27 @@ export default function (app) {
       res.status(500).send("Error fetching patients");
     }
   });
+
+  app.put("/patient/:id", async (req, res) => {
+    const id = req.params.id;
+    const updates = req.body;
+  
+    try {
+      const oldPatient = await patientService.getPatientById(id);
+      const oldEmail = oldPatient.email;
+      const updatedPatient = await patientService.updatePatient(id, updates);
+      
+      const queueData = {
+        title: 'updatePatient',
+        oldEmail,
+        updatedPatient
+      };
+      queueService.sendDataToQueue(JSON.stringify(queueData));
+
+      res.json(updatedPatient);
+    } catch (err) {
+      console.error(err);
+      res.status(err.statusCode || 500).json({ message: err.message });
+    }
+  });
 }
