@@ -1,6 +1,7 @@
 import {connect} from 'amqplib';
 
-const connection = await connect(`amqp://${process.env.RABBITMQ_HOST || 'localhost'}`);
+// const connection = await connect(`amqp://${process.env.RABBITMQ_HOST || 'localhost'}`);
+const connection = await connect('amqp://localhost');
 const channel = await connection.createChannel();
 const queue = 'message';
 
