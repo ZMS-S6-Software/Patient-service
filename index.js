@@ -4,6 +4,7 @@ import sql from 'mssql';
 import dotenv from 'dotenv';
 import cors from 'cors';
 //controllers
+import config from './BusinessLogic/dbConfig.js';
 import patientController from "./Controllers/PatientController.js";
 
 //env inladen
@@ -16,16 +17,7 @@ app.use(cors({
   origin: process.env.FRONTEND || 'http://localhost:8083'
 }));
 
-// Configuratie voor databaseverbinding
-const config = {
-  user: 'sa',
-  password: 'admin',
-  server: 'DESKTOP-T5DHN9T',
-  database: 'master',
-  options: {
-      encrypt: false
-  }
-};
+
 
 // Connectie maken met de database
 sql.connect(config)
