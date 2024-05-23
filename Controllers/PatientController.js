@@ -1,9 +1,7 @@
-import rabbitQueue from '../BusinessLogic/messageBroker.js';
-// import patientLogic from '../BusinessLogic/PatientLogic.js';
+// import rabbitQueue from '../BusinessLogic/messageBroker.js';
 import sql from 'mssql';
 import config from '../BusinessLogic/dbConfig.js';
-// const patientService = patientLogic();
-const queueService = rabbitQueue();
+// const queueService = rabbitQueue();
 
 export default function (app) {
 
@@ -99,12 +97,12 @@ export default function (app) {
       const updatedPatient = updatedPatientResult.recordset[0];
 
       // Prepare data for the queue
-      const queueData = {
-        title: 'updatePatient',
-        oldEmail: oldPatient.email,
-        updatedPatient
-      };
-      queueService.sendDataToQueue(JSON.stringify(queueData));
+      // const queueData = {
+      //   title: 'updatePatient',
+      //   oldEmail: oldPatient.email,
+      //   updatedPatient
+      // };
+      // queueService.sendDataToQueue(JSON.stringify(queueData));
 
       // Respond with the updated patient
       res.json(updatedPatient);
