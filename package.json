@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "dev": "npm run dev"
   },
   "keywords": [],
@@ -18,12 +18,15 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "install": "^0.13.0",
+    "mocha": "^10.4.0",
     "mongodb": "^6.6.2",
     "mongoose": "^8.4.0",
-    "mocha": "^10.4.0",
     "mssql": "^10.0.2",
     "mysql": "^2.18.1",
+    "npm": "^10.8.0",
     "sequelize": "^6.37.3",
-    "sinon": "^18.0.0"
+    "sinon": "^18.0.0",
+    "supertest": "^7.0.0"
   }
 }
